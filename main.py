@@ -9,7 +9,9 @@ LINE = (
     "years of doing it unsupervised were a fluke."
 )
 
-# The gate requires 1-200 characters of non-whitespace UTF-8 text.
+# The gate requires 1-200 characters of non-whitespace UTF-8 text, on one line.
+if "\n" in LINE or "\r" in LINE:
+    raise SystemExit("entry line must be a single line")
 if not 1 <= len(LINE.strip()) <= 200:
     raise SystemExit(f"entry line must be 1-200 characters, got {len(LINE)}")
 
